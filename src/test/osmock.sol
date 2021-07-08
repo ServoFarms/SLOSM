@@ -2,7 +2,7 @@ interface ValueMock {
     function peek() external view returns (bytes32, bool);
 }
 
-contract OSM {
+contract OSMock {
 
     // --- Auth ---
     mapping (address => uint) public wards;

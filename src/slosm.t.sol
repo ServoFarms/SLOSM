@@ -2,7 +2,7 @@ pragma solidity 0.6.12;
 
 import "ds-test/test.sol";
 import { DSValue } from "ds-value/value.sol";
-import { OSM }     from "osm/osm.sol";
+import { OSMock }  from "./test/osmock.sol";
 
 import { SLOSM }   from "./slosm.sol";
 

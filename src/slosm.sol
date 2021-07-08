@@ -60,8 +60,8 @@ contract SLOSM is LibNote {
 
     // --- Auth ---
     function wards(address usr) external returns (uint256) { return osm.wards(usr); }
-    function rely(address usr) external { revert("SLOSM/rely-on-osm"); }
-    function deny(address usr) external { revert("SLOSM/deny-on-osm"); }
+    function rely(address) external { revert("SLOSM/rely-on-osm"); }
+    function deny(address) external { revert("SLOSM/deny-on-osm"); }
     modifier auth {
         require(osm.wards(msg.sender) == 1, "SLOSM/not-authorized-on-osm");
         _;
@@ -96,7 +96,7 @@ contract SLOSM is LibNote {
         require(z >= x);
     }
 
-    OSM    public immutable osm;
+    IOSM    public immutable osm;
 
     uint16 public hop;
     uint64 public zzz;
