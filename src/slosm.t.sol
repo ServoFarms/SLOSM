@@ -65,19 +65,19 @@ contract SLOSMTest is DSTest {
         hevm.warp(uint(slosm.hop() * 2));                         //warp 2 hops
         slosm.poke();                                             //set new curent and next osm value
         (bytes32 val, bool has) = slosm.peek();                   //pull current osm value
-        assertEq(uint(val), 100 ether);                         //verify osm value is 100
-        assertTrue(has);                                        //verify osm value is valid
+        assertEq(uint(val), 100 ether);                           //verify osm value is 100
+        assertTrue(has);                                          //verify osm value is valid
         (val, has) = slosm.peep();                                //pull next osm value
-        assertEq(uint(val), 100 ether);                         //verify next osm value is 100
-        assertTrue(has);                                        //verify next osm value is valid
+        assertEq(uint(val), 100 ether);                           //verify next osm value is 100
+        assertTrue(has);                                          //verify next osm value is valid
         slosm.void();                                             //void all osm values
         assertTrue(slosm.stopped() == 1);                         //verify osm is inactive
         (val, has) = slosm.peek();                                //pull current osm value
-        assertEq(uint(val), 0);                                 //verify current osm value is 0
-        assertTrue(!has);                                       //verify current osm value is invalid
+        assertEq(uint(val), 0);                                   //verify current osm value is 0
+        assertTrue(!has);                                         //verify current osm value is invalid
         (val, has) = slosm.peep();                                //pull next osm value
-        assertEq(uint(val), 0);                                 //verify next osm value is 0
-        assertTrue(!has);                                       //verify next osm value is invalid
+        assertEq(uint(val), 0);                                   //verify next osm value is 0
+        assertTrue(!has);                                         //verify next osm value is invalid
     }
 
     function testPoke() public {
@@ -109,32 +109,32 @@ contract SLOSMTest is DSTest {
     }
 
     function testWhitelistPeep() public {
-        slosm.kiss(bud);                                          //whitelist caller
-        (bytes32 val, bool has) = slosm.peep();                   //pull next osm value
+        osm.kiss(bud);                                          //whitelist caller
+        (bytes32 val, bool has) = slosm.peep();                 //pull next osm value
         assertEq(uint(val), 100 ether);                         //verify next osm value is 100
         assertTrue(has);                                        //verify next osm value is valid
     }
 
     function testFailWhitelistPeek() public view {
-        slosm.peek();                                             //attempt to pull current osm value
+        slosm.peek();                                           //attempt to pull current osm value
     }
 
     function testWhitelistPeek() public {
-        slosm.kiss(bud);                                //whitelist caller
-        slosm.peek();                                             //pull current osm value
+        osm.kiss(bud);                                          //whitelist caller
+        slosm.peek();                                           //pull current osm value
 
     }
 
     function testKiss() public {
         assertTrue(slosm.bud(address(this)) == 0);                //verify caller is not whitelisted
-        slosm.kiss(bud);                                //whitelist caller
+        osm.kiss(bud);                                            //whitelist caller
         assertTrue(slosm.bud(address(this)) == 1);                //verify caller is whitelisted
     }
 
     function testDiss() public {
-        slosm.kiss(bud);                                //whitelist caller
+        osm.kiss(bud);                                //whitelist caller
         assertTrue(slosm.bud(address(this)) == 1);                //verify caller is whitelisted
-        slosm.diss(bud);                                //remove caller from whitelist
+        osm.diss(bud);                                //remove caller from whitelist
         assertTrue(slosm.bud(address(this)) == 0);                //verify caller is not whitelisted
     }
 }
