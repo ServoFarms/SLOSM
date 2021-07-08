@@ -1,8 +1,10 @@
 pragma solidity 0.6.12;
 
 import "ds-test/test.sol";
+import { DSValue } from "ds-value/value.sol";
+import { OSM }     from "osm/osm.sol";
 
-import "./slosm.sol";
+import { SLOSM }   from "./slosm.sol";
 
 contract SLOSMTest is DSTest {
     SLOSM  slosm;

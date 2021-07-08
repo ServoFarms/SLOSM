@@ -1,7 +1,7 @@
 pragma solidity 0.6.12;
 
 // https://github.com/makerdao/osm
-interface OSM {
+interface IOSM {
     function wards(address) external view returns (uint256);
     function stopped() external view returns (uint256);
     function src() external view returns (address);
@@ -113,7 +113,7 @@ contract SLOSM is LibNote {
 
     constructor(address _osm, uint256 _hop) public {
         require(_hop < uint16(-1), "SLOSM/invalid-hop");
-        osm = OSM(_osm);
+        osm = IOSM(_osm);
         hop = uint16(_hop);
     }
 
