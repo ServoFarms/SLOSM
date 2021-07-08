@@ -38,7 +38,7 @@ contract SLOSMTest is DSTest {
         assertEq(slosm.src(), address(feed));                     //verify slosm source is feed
         assertEq(address(slosm.osm()), address(osm));             //verify slosm osm is osm
         DSValue feed2 = new DSValue();                            //create new feed
-        osm.change(address(feed2));                              //change osm source to new feed
+        osm.change(address(feed2));                               //change osm source to new feed
         assertEq(slosm.src(), address(feed2));                    //verify osm source is new feed
     }
 
@@ -50,9 +50,9 @@ contract SLOSMTest is DSTest {
     }
 
     function testSetHop() public {
-        assertEq(uint(slosm.hop()), 3600);                        //verify interval is 1 hour
-        slosm.step(uint16(7200));                                 //change interval to 2 hours
-        assertEq(uint(slosm.hop()), 7200);                        //verify interval is 2 hours
+        assertEq(uint(slosm.hop()), 3 hours);                     //verify interval is 3 hours
+        slosm.step(uint16(2 hours));                              //change interval to 2 hours
+        assertEq(uint(slosm.hop()), 2 hours);                        //verify interval is 2 hours
     }
 
     function testFailSetHopZero() public {
