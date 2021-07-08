@@ -1,3 +1,5 @@
+pragma solidity 0.6.12;
+
 interface ValueMock {
     function peek() external view returns (bytes32, bool);
 }

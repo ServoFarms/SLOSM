@@ -159,7 +159,7 @@ contract SLOSM is LibNote {
 
     function poke() external stoppable note {
         require(block.timestamp >= add(zzz, hop), "SLOSM/not-passed");
-        (bytes32 wut, bool ok) = osm.peek();
+        (bytes32 wut, bool ok) = osm.peep();
         if (ok) {
             cur = nxt;
             nxt = Feed(uint128(uint256(wut)), 1);
