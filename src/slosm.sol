@@ -96,7 +96,7 @@ contract SLOSM is LibNote {
         require(z >= x);
     }
 
-    IOSM    public immutable osm;
+    IOSM   public immutable osm;
 
     uint16 public hop;
     uint64 public zzz;

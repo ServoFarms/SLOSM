@@ -2,6 +2,7 @@ interface ValueMock {
     function peek() external view returns (bytes32, bool);
 }
 
+// Simplified OSM without ds-note or imports.
 contract OSMock {
 
     // --- Auth ---
